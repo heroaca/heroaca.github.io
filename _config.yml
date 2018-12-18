@@ -1,0 +1,15 @@
+collections:
+  vigilantes:
+    output: true
+    permalink: /:collection/:name
+
+defaults:
+  - scope:
+      path: ""
+      type: "vigilantes"
+    values:
+      layout: "manga"
+  - scope:
+      path: ""
+    values:
+      layout: "default"

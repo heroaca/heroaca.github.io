@@ -1,0 +1,159 @@
+<link rel="stylesheet" type="text/css" href="../assets/css/default.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/bookblock.css" />
+    <!-- custom demo style -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/manga.css" />
+    <script src="../assets/js/modernizr.custom.js"></script>
+
+    <style type="text/css">
+
+      .manga {
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+      .left {
+        -webkit-justify-content: flex-end;
+        justify-content: flex-end;
+      }
+
+      .right {
+        -webkit-justify-content: flex-start;
+        justify-content: flex-start;
+      }
+
+      .bb-custom-side {
+        float: right;
+      }
+
+      .bb-custom-wrapper > nav a {
+        opacity: 0.5;
+      }
+
+    </style>
+
+
+
+      <div class="container">
+      <div class="bb-custom-wrapper">
+        
+        <div id="bb-bookblock" class="bb-bookblock">
+<!-- <div class="image-gallery"> -->
+{% for file in site.static_files %}
+  {% if file.path contains include.folder %}
+    {% if file.extname == '.jpg' or 
+      file.extname == '.jpeg' or 
+      file.extname == '.JPG' or 
+      file.extname == '.JPEG' %}
+
+      {% capture thecycle %}{% cycle 'odd', 'even' %}{% endcapture %}
+
+      {% assign filenameparts = file.path | split: "/" %}
+      {% assign filename = filenameparts | last | replace: file.extname,"" %}
+
+      {% if thecycle == 'odd' %}
+          <div class="bb-item">
+            <div class="bb-custom-side right bb-nav-prev">
+              <img class="manga" src="{{ file.path }}" alt="{{ filename }}"/>
+            </div>
+            {% endif %}
+
+            {% if thecycle == 'even' %}
+            <div class="bb-custom-side left bb-nav-next">
+              <img class="manga" src="{{ file.path }}" alt="{{ filename }}"/>
+            </div>
+          </div>
+        {% endif %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+        </div>
+      </div>
+    </div><!-- /container -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="../assets/js/jquerypp.custom.js"></script>
+    <script src="../assets/js/jquery.bookblock.js"></script>
+    <script>
+      var Page = (function() {
+        
+        var config = {
+            $bookBlock : $( '#bb-bookblock' ),
+            $navNext : $( '.bb-nav-next' ),
+            $navPrev : $( '.bb-nav-prev' ),
+            $navFirst : $( '#bb-nav-first' ),
+            $navLast : $( '#bb-nav-last' )
+          },
+          init = function() {
+            config.$bookBlock.bookblock( {
+              speed : 600,
+              direction: 'rtl',
+              shadowSides : 0.8,
+              shadowFlip : 0.4
+            } );
+            initEvents();
+          },
+          initEvents = function() {
+            
+            var $slides = config.$bookBlock.children();
+
+            // add navigation events
+            config.$navNext.on( 'click touchstart', function() {
+              config.$bookBlock.bookblock( 'next' );
+              return false;
+            } );
+
+            config.$navPrev.on( 'click touchstart', function() {
+              config.$bookBlock.bookblock( 'prev' );
+              return false;
+            } );
+
+            config.$navFirst.on( 'click touchstart', function() {
+              config.$bookBlock.bookblock( 'first' );
+              return false;
+            } );
+
+            config.$navLast.on( 'click touchstart', function() {
+              config.$bookBlock.bookblock( 'last' );
+              return false;
+            } );
+            
+            // add swipe events
+            $slides.on( {
+              'swipeleft' : function( event ) {
+                config.$bookBlock.bookblock( 'prev' );
+                return false;
+              },
+              'swiperight' : function( event ) {
+                config.$bookBlock.bookblock( 'next' );
+                return false;
+              }
+            } );
+
+            // add keyboard events
+            $( document ).keydown( function(e) {
+              var keyCode = e.keyCode || e.which,
+                arrow = {
+                  left : 37,
+                  up : 38,
+                  right : 39,
+                  down : 40
+                };
+
+              switch (keyCode) {
+                case arrow.left:
+                  config.$bookBlock.bookblock( 'next' );
+                  break;
+                case arrow.right:
+                  config.$bookBlock.bookblock( 'prev' );
+                  break;
+              }
+            } );
+          };
+
+          return { init : init };
+
+      })();
+    </script>
+    <script>
+        Page.init();
+    </script>
+<!-- </div> -->
