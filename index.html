@@ -6,7 +6,16 @@ title: Vigilantes Chapters
 
 <ul>
 	{% for chapter in site.vigilantes %}
-	{% assign filename = chapter.relative_path | replace_first: '0', '' | replace: chapter.collection, '' | replace: '/', ''  | replace: '_', '' | replace: '.md', '' %}
+
+	{% assign filename = chapter.relative_path | replace: chapter.collection, '' | replace: '/', ''  | replace: '_', '' | replace: '.md', '' %}
+
+	{% capture firstchar %}{{ filename | slice: 0 }}{% endcapture %}
+	
+	{% if firstchar == '0' %}
+	{% assign filename = filename | replace_first: '0', '' %}
+	{% endif %}
+	
+
 	<li>
 		<a href="{{ chapter.url }}"><h2>Chapter {{ filename }}</h2>
 		<h3>{{ chapter.name }}</h3></a>

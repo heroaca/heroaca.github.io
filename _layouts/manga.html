@@ -1,6 +1,12 @@
 
 {% assign filename = page.relative_path | replace: page.collection, '' | replace: '/', ''  | replace: '_', '' | replace: '.md', '' %}
 
+{% capture firstchar %}{{ filename | slice: 0 }}{% endcapture %}
+  
+{% if firstchar == '0' %}
+{% assign filename = filename | replace_first: '0', '' %}
+{% endif %}
+
 {% capture folder-number %}assets/{{page.collection}}/{{filename}}{% endcapture %}
 
 <!doctype html>
