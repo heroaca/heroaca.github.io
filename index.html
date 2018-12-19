@@ -135,7 +135,7 @@ h1 {
 	{% assign filename = filename | replace_first: '0', '' %}
 	{% endif %}
 
-	<a class="nav__item" href="{{ chapter.url }}"><span class="nav__item-title">CHAPTER {{ filename }}</br><span class="nav__item-subtitle">{{ chapter.name }}</span></span></a>
+	<a class="nav__item" href="{{ chapter.url }}" target="_blank"><span class="nav__item-title">CHAPTER {{ filename }}</br><span class="nav__item-subtitle">{{ chapter.name }}</span></span></a>
 
 	{% endfor %}
 </nav>
