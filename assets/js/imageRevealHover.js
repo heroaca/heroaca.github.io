@@ -125,7 +125,7 @@
     
     // Demo purspose only: Preload all the images in the page..
     const contentel = document.querySelector('.content');
-    Array.from(document.querySelectorAll('.nav__item, .block__title, .block__link, .content__text-link')).forEach((el) => {
+    Array.from(document.querySelectorAll('.nav__item')).forEach((el) => {
         const imgsArr = el.dataset.img.split(',');
         for (let i = 0, len = imgsArr.length; i <= len-1; ++i ) {
             const imgel = document.createElement('img');

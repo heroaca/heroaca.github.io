@@ -360,7 +360,7 @@ a.content__text-link[data-fx="10"]:hover::after {
 	.block {
 		align-items: flex-start;
 	}
-	.content {
+	/*.content {
 		position: relative;
 		display: grid;
 		grid-template-columns: repeat(3,33.33%);
@@ -369,7 +369,7 @@ a.content__text-link[data-fx="10"]:hover::after {
 		max-width: 700px;
 		min-height: 100vh;
 		text-align: left;
-	}
+	}*/
 	.content__text {
 		grid-column: span 3;
 	}
