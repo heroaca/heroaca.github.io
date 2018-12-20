@@ -25,11 +25,6 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
-h1 {
-	font-family: 'Major Mono Display', monospace;
-	text-align: center;
-}
-
 /* Page Loader */
 .js .loading::before {
 	content: '';
@@ -109,7 +104,7 @@ main {
 }
 
 .frame__links a {
-	/*text-transform: lowercase;*/
+	text-transform: lowercase;
 }
 
 .frame__links a:not(:last-child) {
@@ -122,8 +117,8 @@ main {
 }
 
 .block {
-	/*padding: 0 4rem 20vh;*/
-	padding: 0 0 5vh;
+	text-transform: lowercase;
+	padding: 0 4rem 20vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -146,8 +141,7 @@ main {
 .block__link {
 	position: relative;
 	cursor: pointer;
-	padding: 0.9rem 0 0.3rem 0;
-	text-align: center;
+	padding: 0.5rem 0;
 	color: var(--color-blocklink);
 }
 
@@ -295,7 +289,7 @@ a.content__text-link[data-fx="10"]:hover::after {
 .hover-reveal {
 	position: fixed;
 	width: 200px;
-	height: 300px;
+	height: 150px;
 	top: 0;
 	left: 0;
 	pointer-events: none;
@@ -319,14 +313,11 @@ a.content__text-link[data-fx="10"]:hover::after {
 }
 
 .hover-reveal__img {
-	background-size: contain;
+	background-size: cover;
 	background-position: 50% 50%;
 }
 
 @media screen and (min-width: 53em) {
-	h1 {
-		text-align: left;
-	}
 	.message {
 		display: none;
 	}
@@ -369,11 +360,7 @@ a.content__text-link[data-fx="10"]:hover::after {
 	.block {
 		align-items: flex-start;
 	}
-
-	.block__link {
-		text-align: left;
-	}
-	/*.content {
+	.content {
 		position: relative;
 		display: grid;
 		grid-template-columns: repeat(3,33.33%);
@@ -382,7 +369,7 @@ a.content__text-link[data-fx="10"]:hover::after {
 		max-width: 700px;
 		min-height: 100vh;
 		text-align: left;
-	}*/
+	}
 	.content__text {
 		grid-column: span 3;
 	}

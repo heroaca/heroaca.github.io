@@ -1,0 +1,641 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Vigilantes Archives</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/styles.css">
+  </head>
+  <body>
+    <nav>
+  
+</nav>
+    <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display|Montserrat" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="assets/css/imageRevealHover.css">
+<style type="text/css">
+/* General styles */
+
+body {
+	background: #1e1b2c;
+	color: #fff;
+	font-family: 'Montserrat', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+	font-family: 'Major Mono Display', monospace;
+}
+
+.nav {
+	position: relative;
+	width: 8em;
+	margin: 0 0 0 3em;
+}
+
+.nav__item {
+	text-decoration: none;
+	line-height: 1;
+	position: relative;
+	display: block;
+	margin: 0;
+	padding: 0;
+	letter-spacing: 0;
+	color: currentColor;
+	border: 0;
+	background: none;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+.nav__item:focus {
+	outline: none;
+}
+
+/*** Mariame ***/
+
+.nav--mariame .nav__item {
+	height: 2.25em;
+	margin: 0 0 2.5em 0;
+	-webkit-perspective: 500px;
+	perspective: 500px;
+}
+
+.nav--mariame .nav__item::before,
+.nav--mariame .nav__item::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 1.75em;
+	height: 2.25em;
+	border: 2px solid #5050b9;
+	background: #a9a9d4;
+}
+
+.nav--mariame .nav__item::before {
+	-webkit-transition: background-color 0s 0.2s;
+	transition: background-color 0s 0.2s;
+}
+
+.nav--mariame .nav__item--current::before {
+	background: #f3f3f3;
+	-webkit-transition: none;
+	transition: none;
+}
+
+.nav--mariame .nav__item::after {
+	box-shadow: 0px 0 9px -4px rgba(0,0,0,0);
+	-webkit-transform-origin: 1px 50%;
+	transform-origin: 1px 50%;
+	-webkit-transition: -webkit-transform 0.5s, background-color 0s 0.15s, box-shadow 0.5s;
+	transition: transform 0.5s, background-color 0s 0.15s, box-shadow 0.5s;
+}
+
+.nav--mariame .nav__item:not(.nav__item--current):hover::after,
+.nav--mariame .nav__item:not(.nav__item--current):focus::after {
+	background-color: #a9a9d4;
+	box-shadow: 6px 0 9px -4px rgba(0,0,0,0.2);
+	-webkit-transform: rotate3d(0,1,0,-145deg);
+	transform: rotate3d(0,1,0,-145deg);
+}
+
+.nav--mariame .nav__item-title {
+	font-size: 1em;
+	/*font-weight: bold;*/
+	text-align: left;
+	margin: 0 0 0 3.5em;
+	white-space: nowrap;
+	display: block;
+	opacity: 0.5;
+	/*color: #5050b9;*/
+	color: #fff;
+	-webkit-transition: opacity 0.5s;
+	transition: opacity 0.5s;
+	-webkit-transition-timing-function: cubic-bezier(0.2,1,0.3,1);
+	transition-timing-function: cubic-bezier(0.2,1,0.3,1);
+}
+
+.nav__item-subtitle {
+	font-size: 1.5em;
+	font-weight: bold;
+	text-align: left;
+	line-height: 1.5;
+}
+
+.nav--mariame .nav__item:not(.nav__item--current):focus .nav__item-title,
+.nav--mariame .nav__item:not(.nav__item--current):hover .nav__item-title {
+	opacity: 0.9;
+}
+
+.nav--mariame .nav__item--current .nav__item-title {
+	opacity: 1;
+}
+</style>
+<div class="container loading">
+</br><h1>Vigilantes Archives</h1></br>
+
+<span class="link-copy"></span>
+<nav class="nav nav--mariame content" data-fx="1">
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/00" target="_blank" data-img="assets/vig-thumb/0.jpg"><span class="nav__item-title">CHAPTER 0</br><span class="nav__item-subtitle">Trailer Marketing</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/01" target="_blank" data-img="assets/vig-thumb/1.jpg"><span class="nav__item-title">CHAPTER 1</br><span class="nav__item-subtitle">I'm Here (俺がいる Ore ga iru)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/02" target="_blank" data-img="assets/vig-thumb/2.jpg"><span class="nav__item-title">CHAPTER 2</br><span class="nav__item-subtitle">Takeoff (離陸 Teikuofu)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/03" target="_blank" data-img="assets/vig-thumb/3.jpg"><span class="nav__item-title">CHAPTER 3</br><span class="nav__item-subtitle">Nice Guy Reborn (親切マン改 Shinsetsu Man Aratame)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/04" target="_blank" data-img="assets/vig-thumb/4.jpg"><span class="nav__item-title">CHAPTER 4</br><span class="nav__item-subtitle">Honesty (素顔 Sugao)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/05" target="_blank" data-img="assets/vig-thumb/5.jpg"><span class="nav__item-title">CHAPTER 5</br><span class="nav__item-subtitle">Bee (蜂 Hachi)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/06" target="_blank" data-img="assets/vig-thumb/6.jpg"><span class="nav__item-title">CHAPTER 6</br><span class="nav__item-subtitle">No Need to Hold Back (手加減無用 Tekagen Muyō)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/06a" target="_blank" data-img="assets/vig-thumb/6A.jpg"><span class="nav__item-title">CHAPTER 6A</br><span class="nav__item-subtitle">Hero Meeting (ヒーロー会合 Hīrō Kaigō)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/06b" target="_blank" data-img="assets/vig-thumb/6B.jpg"><span class="nav__item-title">CHAPTER 6B</br><span class="nav__item-subtitle">Hero Visit (ヒーロー訪問 Hīrō Hōmon)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/07" target="_blank" data-img="assets/vig-thumb/7.jpg"><span class="nav__item-title">CHAPTER 7</br><span class="nav__item-subtitle">Top Runner (トップランナー Toppu Ran'nā)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/07b" target="_blank" data-img="assets/vig-thumb/7B.jpg"><span class="nav__item-title">CHAPTER 7B</br><span class="nav__item-subtitle">Appearance Matters (見た目が大事 Mitame ga Daiji)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/08" target="_blank" data-img="assets/vig-thumb/8.jpg"><span class="nav__item-title">CHAPTER 8</br><span class="nav__item-subtitle">Him ("あの人"のこと "Ano Hito" no Koto)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/09" target="_blank" data-img="assets/vig-thumb/9.jpg"><span class="nav__item-title">CHAPTER 9</br><span class="nav__item-subtitle">Judgment (断罪 Danzai)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/09b" target="_blank" data-img="assets/vig-thumb/9B.jpg"><span class="nav__item-title">CHAPTER 9B</br><span class="nav__item-subtitle">Mask (仮面 Kamen)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/10" target="_blank" data-img="assets/vig-thumb/10.jpg"><span class="nav__item-title">CHAPTER 10</br><span class="nav__item-subtitle">Scream (悲鳴 Himei)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/11" target="_blank" data-img="assets/vig-thumb/11.jpg"><span class="nav__item-title">CHAPTER 11</br><span class="nav__item-subtitle">Crossing Lines (一線 Issen)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/12" target="_blank" data-img="assets/vig-thumb/12.jpg"><span class="nav__item-title">CHAPTER 12</br><span class="nav__item-subtitle">Senior (先輩 Senpai)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/13" target="_blank" data-img="assets/vig-thumb/13.jpg"><span class="nav__item-title">CHAPTER 13</br><span class="nav__item-subtitle">Makoto (真 Makoto)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/14" target="_blank" data-img="assets/vig-thumb/14.jpg"><span class="nav__item-title">CHAPTER 14</br><span class="nav__item-subtitle">Major (MAJOR Mejā)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/15" target="_blank" data-img="assets/vig-thumb/15.jpg"><span class="nav__item-title">CHAPTER 15</br><span class="nav__item-subtitle">Playboy (PLAYBOY Pureibōi)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/16" target="_blank" data-img="assets/vig-thumb/16.jpg"><span class="nav__item-title">CHAPTER 16</br><span class="nav__item-subtitle">Ferocious Mom Descends (猛母襲来! Mō Haha Shūrai!)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/17" target="_blank" data-img="assets/vig-thumb/17.jpg"><span class="nav__item-title">CHAPTER 17</br><span class="nav__item-subtitle">Tag Formation (タッグ結成! Taggu Kessei!)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/18" target="_blank" data-img="assets/vig-thumb/18.jpg"><span class="nav__item-title">CHAPTER 18</br><span class="nav__item-subtitle">Accelerated by Spirit (気合いで加速! Kiai de Kasoku!)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/19" target="_blank" data-img="assets/vig-thumb/19.jpg"><span class="nav__item-title">CHAPTER 19</br><span class="nav__item-subtitle">Family (家族 Kazoku)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/20" target="_blank" data-img="assets/vig-thumb/20.jpg"><span class="nav__item-title">CHAPTER 20</br><span class="nav__item-subtitle">Event Holding (イベント開催 Ibento Kaisai)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/21" target="_blank" data-img="assets/vig-thumb/21.jpg"><span class="nav__item-title">CHAPTER 21</br><span class="nav__item-subtitle">Unit Formation (ユニット結成 Yunitto Kessei)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/22" target="_blank" data-img="assets/vig-thumb/22.jpg"><span class="nav__item-title">CHAPTER 22</br><span class="nav__item-subtitle">Performance Day (本番当日 Honban Tōjitsu)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/23" target="_blank" data-img="assets/vig-thumb/23.jpg"><span class="nav__item-title">CHAPTER 23</br><span class="nav__item-subtitle">Daughter (娘 Musume)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/24" target="_blank" data-img="assets/vig-thumb/24.jpg"><span class="nav__item-title">CHAPTER 24</br><span class="nav__item-subtitle">Parent-Child Conversation (親子の会話 Oyako no Kaiwa)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/25" target="_blank" data-img="assets/vig-thumb/25.jpg"><span class="nav__item-title">CHAPTER 25</br><span class="nav__item-subtitle">Goodbye to Papa (パパにさよなら Papa ni Sayonara)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/26" target="_blank" data-img="assets/vig-thumb/26.jpg"><span class="nav__item-title">CHAPTER 26</br><span class="nav__item-subtitle">Tamao (珠緒)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/27" target="_blank" data-img="assets/vig-thumb/27.jpg"><span class="nav__item-title">CHAPTER 27</br><span class="nav__item-subtitle">Taking Care of Business (用事 Yōji)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/28" target="_blank" data-img="assets/vig-thumb/28.jpg"><span class="nav__item-title">CHAPTER 28</br><span class="nav__item-subtitle">Forgotten (忘れ物 Wasuremono)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/29" target="_blank" data-img="assets/vig-thumb/29.jpg"><span class="nav__item-title">CHAPTER 29</br><span class="nav__item-subtitle">Weapon (武器 Buki)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/30" target="_blank" data-img="assets/vig-thumb/30.jpg"><span class="nav__item-title">CHAPTER 30</br><span class="nav__item-subtitle">Investigation (捜査 Sōsa)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/31" target="_blank" data-img="assets/vig-thumb/31.jpg"><span class="nav__item-title">CHAPTER 31</br><span class="nav__item-subtitle">On Tour (遠征 Ensei)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/32" target="_blank" data-img="assets/vig-thumb/32.jpg"><span class="nav__item-title">CHAPTER 32</br><span class="nav__item-subtitle">The Job (仕事 Shigoto)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/33" target="_blank" data-img="assets/vig-thumb/33.jpg"><span class="nav__item-title">CHAPTER 33</br><span class="nav__item-subtitle">Infiltrate (潜入 Sen'nyū)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/34" target="_blank" data-img="assets/vig-thumb/34.jpg"><span class="nav__item-title">CHAPTER 34</br><span class="nav__item-subtitle">Rampage (暴走 Bōsō)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/35" target="_blank" data-img="assets/vig-thumb/35.jpg"><span class="nav__item-title">CHAPTER 35</br><span class="nav__item-subtitle">Rescue (救出 Kyūshutsu)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/36" target="_blank" data-img="assets/vig-thumb/36.jpg"><span class="nav__item-title">CHAPTER 36</br><span class="nav__item-subtitle">Merchandise (グッズ Guzzu)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/37" target="_blank" data-img="assets/vig-thumb/37.jpg"><span class="nav__item-title">CHAPTER 37</br><span class="nav__item-subtitle">Big Brother (お兄さん Onīsan)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/38" target="_blank" data-img="assets/vig-thumb/38.jpg"><span class="nav__item-title">CHAPTER 38</br><span class="nav__item-subtitle">High-Speed Hero (超速ヒーロー Chōsoku Hīrō)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/39" target="_blank" data-img="assets/vig-thumb/39.jpg"><span class="nav__item-title">CHAPTER 39</br><span class="nav__item-subtitle">A Rational Man (合理的な男 Gōri-tekina Otoko)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/40" target="_blank" data-img="assets/vig-thumb/40.jpg"><span class="nav__item-title">CHAPTER 40</br><span class="nav__item-subtitle">A Rational Team-Up (合理的に共闘 Gōri-teki ni Kyōtō)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/41" target="_blank" data-img="assets/vig-thumb/41.jpg"><span class="nav__item-title">CHAPTER 41</br><span class="nav__item-subtitle">A Rational New Move?! (合理的な新技？ Gōri-tekina Shinwaza?)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/42" target="_blank" data-img="assets/vig-thumb/42.jpg"><span class="nav__item-title">CHAPTER 42</br><span class="nav__item-subtitle">Mixer (合コン Gōkon)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/43" target="_blank" data-img="assets/vig-thumb/43.jpg"><span class="nav__item-title">CHAPTER 43</br><span class="nav__item-subtitle">Casanova (モテ期 Moteki)</span></span></a>
+
+	
+
+	
+
+	
+	
+	
+
+	<a class="nav__item" href="/vigilantes/44" target="_blank" data-img="assets/vig-thumb/44.jpg"><span class="nav__item-title">CHAPTER 44</br><span class="nav__item-subtitle">Next Chapter on 12/22 (次回12月22日 配信予定)</span></span></a>
+
+	
+</nav>
+</div>
+
+<script src="assets/js/charming.min.js"></script>
+<script src="assets/js/imagesloaded.pkgd.min.js"></script>
+<script src="assets/js/TweenMax.min.js"></script>
+<script src="assets/js/imageRevealHover.js"></script>
+
+  </body>
+</html>
