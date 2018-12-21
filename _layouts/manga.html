@@ -78,7 +78,8 @@
     {% if file.extname == '.jpg' or 
       file.extname == '.jpeg' or 
       file.extname == '.JPG' or 
-      file.extname == '.JPEG' %}
+      file.extname == '.JPEG' or 
+      file.extname == '.png' %}
 
       {% capture thecycle %}{% cycle 'odd', 'even' %}{% endcapture %}
 
