@@ -31,6 +31,11 @@ h1 {
 	margin-bottom: 0;
 }
 
+.instructions {
+	text-align: center;
+	padding: 1em 0;
+}
+
 /* Page Loader */
 .js .loading::before {
 	content: '';
@@ -328,6 +333,12 @@ a.content__text-link[data-fx="10"]:hover::after {
 	h1 {
 		text-align: left;
 	}
+
+	.instructions {
+		text-align: left;
+	}
+
+
 	.message {
 		display: none;
 	}

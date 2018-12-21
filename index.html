@@ -21,9 +21,46 @@ body {
 .block__link_subtitle {
 	font-size: 1.3em;
 }
+
+.arrow-key {
+	width: 35px;
+	height: 35px;
+	border: 1px solid #a9a9a9;
+	border-radius: 2px 2px 2px 2px;
+	-moz-border-radius: 2px 2px 2px 2px;
+	-webkit-border-radius: 2px 2px 2px 2px;
+	font-size: 16px;
+	-moz-box-sizing: border-box !important;
+	-webkit-box-sizing: border-box !important;
+	box-sizing: border-box !important;
+	text-align: center;
+	padding: 6px 11px 9px 11px;
+	color: #7c7c7c;
+	-webkit-box-shadow: 0px 3px 0px -2px rgba(255,255,255,1), 0px 2px 0px 0px rgba(169,169,169,1);
+	-moz-box-shadow: 0px 3px 0px -2px rgba(255,255,255,1), 0px 2px 0px 0px rgba(169,169,169,1);
+	box-shadow: 0px 3px 0px -2px rgba(255,255,255,1), 0px 2px 0px 0px rgba(169,169,169,1);
+	cursor: pointer;
+}
+
+.up-down-keys {
+	padding: 8px 15px;
+}
+
+.instruction-text {
+	padding: 0 30px 0 15px;
+}
+
 </style>
 <div class="container loading">
 </br><h1>Vigilantes Archives</h1></br>
+
+<div class="instructions">
+	<span class="arrow-key">&larr;</span> <span class="arrow-key up">&rarr;</span>
+	<span class="instruction-text"> Next/Prev Page</span>
+
+	<span class="arrow-key up-down-keys">&uarr;</span> <span class="arrow-key up-down-keys">&darr;</span>
+	<span class="instruction-text"> Next/Prev Chapter</span>
+</div>
 
 <div class="content"><div class="block" data-fx="1">
 	{% for chapter in site.vigilantes %}
