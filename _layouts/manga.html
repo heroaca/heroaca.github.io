@@ -10,6 +10,23 @@
 
 {% capture folder-number %}assets/{{page.collection}}/{{filename}}{% endcapture %}
 
+{% capture the_collection %}{{page.collection}}{% endcapture %}
+  {% if page.collection %}
+    {% assign  document = site[the_collection]  %}
+  {% endif %}
+{% for links in document  %}
+  {% if links.title == page.title %}
+    {% unless forloop.first %}
+      {% assign prevurl = prev.url %}
+    {% endunless %}
+    {% unless forloop.last %}
+      {% assign next = document[forloop.index] %}
+      {% assign nexturl = next.url %}
+    {% endunless %}
+  {% endif %}
+  {% assign prev = links %}
+{% endfor %}
+
 <!doctype html>
 <html>
   <head>
@@ -105,7 +122,15 @@
               speed : 600, //600,
               direction: 'rtl',
               shadowSides : 0, //0.8,
-              shadowFlip : 0.4 //0.4
+              shadowFlip : 0.4, //0.4
+              onEndFlip : function(old, page, isLimit) { 
+                if (isLimit && page == 0) {
+                  location.href = "{{prevurl}}";
+                }
+                if (isLimit && page != 0) {
+                  location.href = "{{nexturl}}";
+                }
+              }
             } );
             initEvents();
           },
@@ -162,6 +187,14 @@
                   break;
                 case arrow.right:
                   config.$bookBlock.bookblock( 'prev' );
+                  break;
+                case arrow.up:
+                  // config.$bookBlock.bookblock( 'first' );
+                  location.href = "{{prevurl}}";
+                  break;
+                case arrow.down:
+                  // config.$bookBlock.bookblock( 'last' );
+                  location.href = "{{nexturl}}";
                   break;
               }
             } );

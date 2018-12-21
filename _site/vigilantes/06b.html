@@ -8,6 +8,10 @@
 
 
 
+
+  
+
+
 <!doctype html>
 <html>
   <head>
@@ -2379,7 +2383,15 @@
               speed : 600, //600,
               direction: 'rtl',
               shadowSides : 0, //0.8,
-              shadowFlip : 0.4 //0.4
+              shadowFlip : 0.4, //0.4
+              onEndFlip : function(old, page, isLimit) { 
+                if (isLimit && page == 0) {
+                  location.href = "/vigilantes/06a";
+                }
+                if (isLimit && page != 0) {
+                  location.href = "/vigilantes/07";
+                }
+              }
             } );
             initEvents();
           },
@@ -2436,6 +2448,14 @@
                   break;
                 case arrow.right:
                   config.$bookBlock.bookblock( 'prev' );
+                  break;
+                case arrow.up:
+                  // config.$bookBlock.bookblock( 'first' );
+                  location.href = "/vigilantes/06a";
+                  break;
+                case arrow.down:
+                  // config.$bookBlock.bookblock( 'last' );
+                  location.href = "/vigilantes/07";
                   break;
               }
             } );
