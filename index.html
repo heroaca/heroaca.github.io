@@ -73,7 +73,7 @@ body {
 	{% assign filename = filename | replace_first: '0', '' %}
 	{% endif %}
 
-	<a class="block__link" href="{{ chapter.url }}" target="_blank" data-img="assets/vig-thumb/{{filename}}.jpg"><span class="block__link_title">CHAPTER {{ filename }}</span></br><span class="block__link_subtitle">{{ chapter.name }}</span></a>
+	<a class="block__link" href="{{ chapter.url }}" target="_blank" data-img="assets/{{chapter.collection}}-thumb/{{filename}}.jpg"><span class="block__link_title">CHAPTER {{ filename }}</span></br><span class="block__link_subtitle">{{ chapter.name }}</span></a>
 
 	{% endfor %}
 </div>

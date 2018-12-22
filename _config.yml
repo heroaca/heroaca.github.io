@@ -3,10 +3,23 @@ collections:
     output: true
     permalink: /:collection/:name
 
+  mha:
+    output: true
+    permalink: /:name
+
+  volume:
+    output: true
+    permalink: /:collection/:name
+
 defaults:
   - scope:
       path: ""
       type: "vigilantes"
+    values:
+      layout: "manga"
+  - scope:
+      path: ""
+      type: "mha"
     values:
       layout: "manga"
   - scope:
