@@ -3042,6 +3042,38 @@
     <script src="/assets/js/jquerypp.custom.js"></script>
     <script src="/assets/js/jquery.bookblock.min.js"></script>
     <script>
+      function getUrlVars() {
+        var vars = {};
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+          vars[key] = value;
+        });
+        return vars;
+      }
+
+      function getUrlParam(parameter, defaultvalue){
+        var urlparameter = 0;
+        if(window.location.href.indexOf(parameter) > -1){
+          urlparameter = getUrlVars()[parameter];
+        }
+        return urlparameter;
+      }
+
+      function getPage() {
+        var pageNo = 0;
+        if (getUrlParam('p') != 0) {
+          pageNo = getUrlParam('p');
+        }
+
+        if (getUrlParam('page') != 0) {
+          pageNo = getUrlParam('page');
+        }
+
+        pageNo = Math.round(pageNo/2);
+
+        $( '#bb-bookblock' ).bookblock( 'jump', pageNo );
+      }
+
+
       var Page = (function() {
         
         var config = {
@@ -3067,6 +3099,7 @@
               }
             } );
             initEvents();
+            getPage();
           },
           initEvents = function() {
             
