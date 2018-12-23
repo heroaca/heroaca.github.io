@@ -3017,7 +3017,7 @@
       }
 
       function getUrlParam(parameter, defaultvalue){
-        var urlparameter = 0;
+        var urlparameter = 1;
         if(window.location.href.indexOf(parameter) > -1){
           urlparameter = getUrlVars()[parameter];
         }
@@ -3025,18 +3025,21 @@
       }
 
       function getPage() {
-        var pageNo = 0;
-        if (getUrlParam('p') != 0) {
+        var pageNo = 1;
+        if (getUrlParam('p') != 1) {
           pageNo = getUrlParam('p');
         }
 
-        if (getUrlParam('page') != 0) {
+        if (getUrlParam('page') != 1) {
           pageNo = getUrlParam('page');
         }
 
         pageNo = Math.round(pageNo/2);
 
-        $( '#bb-bookblock' ).bookblock( 'jump', pageNo );
+        if (pageNo > 1) {
+          $( '#bb-bookblock' ).bookblock( 'jump', pageNo );
+        }
+        
       }
 
 
