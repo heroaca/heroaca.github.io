@@ -214,11 +214,15 @@
                   break;
                 case arrow.up:
                   // config.$bookBlock.bookblock( 'first' );
+                  {% if prevurl %}
                   location.href = "{{prevurl}}";
+                  {% endif %}
                   break;
                 case arrow.down:
                   // config.$bookBlock.bookblock( 'last' );
+                  {% if nexturl %}
                   location.href = "{{nexturl}}";
+                  {% endif %}
                   break;
               }
             } );
