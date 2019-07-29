@@ -11,6 +11,14 @@ collections:
     output: true
     permalink: /:collection/:name
 
+  s-vigilantes:
+    output: true
+    permalink: /:collection/:name
+
+  s-mha:
+    output: true
+    permalink: /s/:name
+
 defaults:
   - scope:
       path: ""
@@ -22,6 +30,16 @@ defaults:
       type: "mha"
     values:
       layout: "s-manga"
+  - scope:
+      path: ""
+      type: "s-vigilantes"
+    values:
+      layout: "scroll"
+  - scope:
+      path: ""
+      type: "s-mha"
+    values:
+      layout: "scroll"
   - scope:
       path: ""
     values:
