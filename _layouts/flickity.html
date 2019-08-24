@@ -111,6 +111,17 @@
         opacity: 0.5;
       }
 
+      /* fade in image when loaded */
+      .carousel-cell-image {
+        transition: opacity 0.4s;
+        opacity: 0;
+      }
+
+      .carousel-cell-image.flickity-lazyloaded,
+      .carousel-cell-image.flickity-lazyerror {
+        opacity: 1;
+      }
+
     </style>
   </head>
   <body>
@@ -131,7 +142,7 @@
           {% assign filename = filenameparts | last | replace: file.extname,"" %}
 
           <div class="carousel-cell">
-            <img src="https://heroaca.github.io/assets/vigilantes/60/00.jpg" data-flickity-lazyload="{{ file.path }}" />
+            <img class="carousel-cell-image" src="https://heroaca.github.io/assets/vigilantes/60/00.jpg" data-flickity-lazyload="{{ file.path }}" />
           </div>
           {% endif %}
         {% endif %}
@@ -185,14 +196,14 @@
         $('.main-carousel').flickity({
           // options
           cellAlign: 'right',
-          lazyLoad: true,
+          lazyLoad: 2,
           rightToLeft: true,
           contain: true,
           groupCells: true,
           setGallerySize: false,
           // wrapAround: true,
-          imagesLoaded: true,
-          freeScroll: true
+          // freeScroll: true,
+          imagesLoaded: true
         });
         
         var config = {
@@ -261,19 +272,19 @@
             $( document ).keydown( function(e) {
               var keyCode = e.keyCode || e.which,
                 arrow = {
-                  left : 37,
+                  // left : 37,
                   up : 38,
-                  right : 39,
+                  // right : 39,
                   down : 40
                 };
 
               switch (keyCode) {
-                case arrow.left:
-                  config.$bookBlock.bookblock( 'next' );
-                  break;
-                case arrow.right:
-                  config.$bookBlock.bookblock( 'prev' );
-                  break;
+                // case arrow.left:
+                //   config.$bookBlock.bookblock( 'next' );
+                //   break;
+                // case arrow.right:
+                //   config.$bookBlock.bookblock( 'prev' );
+                //   break;
                 case arrow.up:
                   // config.$bookBlock.bookblock( 'first' );
                   {% if prevurl %}
