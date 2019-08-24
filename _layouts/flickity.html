@@ -206,7 +206,15 @@
           // freeScroll: true,
           imagesLoaded: true
         });
-        
+
+        // init Flickity with jQuery
+        var $carousel = $('.main-carousel').flickity();
+        // get instance
+        var flkty = $carousel.data('flickity');
+        // access properties
+        console.log( flkty.selectedIndex, flkty.selectedElement );
+        var selectedPage = flkty.selectedIndex;
+
         var config = {
             $bookBlock : $( '#bb-bookblock' ),
             $navNext : $( '.bb-nav-next' ),
@@ -215,77 +223,44 @@
             $navLast : $( '#bb-nav-last' )
           },
           init = function() {
-            config.$bookBlock.bookblock( {
-              speed : 1, //600,
-              direction: 'rtl',
-              shadowSides : 0.1, //0.8,
-              shadowFlip : 0.1, //0.4
-              onEndFlip : function(old, page, isLimit) { 
-                if (isLimit && page == 0) {
-                  location.href = "{{prevurl}}";
-                }
-                if (isLimit && page != 0) {
-                  location.href = "{{nexturl}}";
-                }
-              }
-            } );
             initEvents();
             getPage();
           },
           initEvents = function() {
             
-            var $slides = config.$bookBlock.children();
-
-            // add navigation events
-            config.$navNext.on( 'click touchstart', function() {
-              config.$bookBlock.bookblock( 'next' );
-              return false;
-            } );
-
-            config.$navPrev.on( 'click touchstart', function() {
-              config.$bookBlock.bookblock( 'prev' );
-              return false;
-            } );
-
-            config.$navFirst.on( 'click touchstart', function() {
-              config.$bookBlock.bookblock( 'first' );
-              return false;
-            } );
-
-            config.$navLast.on( 'click touchstart', function() {
-              config.$bookBlock.bookblock( 'last' );
-              return false;
-            } );
             
-            // add swipe events
-            $slides.on( {
-              'swipeleft' : function( event ) {
-                config.$bookBlock.bookblock( 'prev' );
-                return false;
-              },
-              'swiperight' : function( event ) {
-                config.$bookBlock.bookblock( 'next' );
-                return false;
-              }
-            } );
 
             // add keyboard events
-            $( document ).keydown( function(e) {
+            $( document ).keyup( function(e) {
               var keyCode = e.keyCode || e.which,
                 arrow = {
-                  // left : 37,
+                  left : 37,
                   up : 38,
-                  // right : 39,
+                  right : 39,
                   down : 40
                 };
 
               switch (keyCode) {
-                // case arrow.left:
-                //   config.$bookBlock.bookblock( 'next' );
-                //   break;
-                // case arrow.right:
-                //   config.$bookBlock.bookblock( 'prev' );
-                //   break;
+                case arrow.left:
+                  // config.$bookBlock.bookblock( 'next' );
+                  $('.main-carousel').flickity('next');
+                  if (flkty.selectedIndex == flkty.slides.length - 1 && selectedPage == flkty.selectedIndex) {
+                    {% if nexturl %}
+                    location.href = "{{nexturl}}";
+                    {% endif %}
+                  }
+                  selectedPage = flkty.selectedIndex;
+                  break;
+                case arrow.right:
+                  // config.$bookBlock.bookblock( 'prev' );
+                  $('.main-carousel').flickity('previous');
+                  if (flkty.selectedIndex == 0 && selectedPage == 0) {
+                    {% if prevurl %}
+                    location.href = "{{prevurl}}";
+                    {% endif %}
+                  }
+                  selectedPage = flkty.selectedIndex;
+                  break;
                 case arrow.up:
                   // config.$bookBlock.bookblock( 'first' );
                   {% if prevurl %}
