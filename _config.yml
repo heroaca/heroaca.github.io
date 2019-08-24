@@ -19,12 +19,21 @@ collections:
     output: true
     permalink: /s/:name
 
+  vigs:
+    output: true
+    permalink: /:collection/:name
+
 defaults:
   - scope:
       path: ""
       type: "vigilantes"
     values:
       layout: "manga"
+  - scope:
+      path: ""
+      type: "vigs"
+    values:
+      layout: "flickity"
   - scope:
       path: ""
       type: "mha"

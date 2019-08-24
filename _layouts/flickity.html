@@ -1,0 +1,301 @@
+
+{% assign filename = page.relative_path | replace: page.collection, '' | replace: '/', ''  | replace: '_', '' | replace: '.md', '' %}
+
+{% assign pagetitle = filename %}
+{% capture firstchar %}{{ pagetitle | slice: 0 }}{% endcapture %}
+  
+{% if firstchar == '0' %}
+{% assign pagetitle = filename | replace_first: '0', '' %}
+{% endif %}
+
+{% capture folder-number %}assets/vigilantes/{{filename}}{% endcapture %}
+
+{% capture the_collection %}{{page.collection}}{% endcapture %}
+  {% if page.collection %}
+    {% assign  document = site[the_collection]  %}
+  {% endif %}
+{% for links in document  %}
+  {% if links.title == page.title %}
+    {% unless forloop.first %}
+      {% assign prevurl = prev.url %}
+    {% endunless %}
+    {% unless forloop.last %}
+      {% assign next = document[forloop.index] %}
+      {% assign nexturl = next.url %}
+    {% endunless %}
+  {% endif %}
+  {% assign prev = links %}
+{% endfor %}
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+  <meta name="description" content="{{ page.name }}">
+  <meta name="author" content="HeroAca">
+  <meta property="og:title" content="{{ page.collection | capitalize}}: Chapter {{pagetitle}}" />
+  <meta property="og:site_name" content="Vigilantes Archives"/>
+  <meta property="og:url" content="https://heroaca.github.io"/>
+  <meta property="og:description" content="{{ page.name }}"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/assets/{{page.collection}}-thumb/{{pagetitle}}.jpg" />
+  <meta property="og:image:width" content="200" />
+  <meta property="og:image:height" content="300" />
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/images/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/images/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/images/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/images/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/images/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/apple-touch-icon-152x152.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon-180x180.png" />
+
+    <title>Chapter {{pagetitle}}: {{ page.name }}</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/default.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/bookblock.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/manga.css" />
+    <script src="/assets/js/modernizr.custom.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+
+    <style type="text/css">
+
+      .next-chapter {
+        width: 100%;
+        height: 100%;
+        padding-top: 50%;
+        font-size: 50pt;
+      }
+
+      .right-side {
+        text-align: left;
+      }
+
+      .left-side {
+        text-align: right;
+      }
+
+      .manga {
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+      .left {
+        -webkit-justify-content: flex-end;
+        justify-content: flex-end;
+      }
+
+      .right {
+        -webkit-justify-content: flex-start;
+        justify-content: flex-start;
+      }
+
+      /* inherit height from parent */
+      .main-carousel { height: 100%; }
+
+      .carousel-cell { height: 100% }
+      .carousel-cell img { height: 100% }
+
+      /* move page dots into carousel */
+      .flickity-page-dots { bottom: 10px; }
+
+      .flickity-button {
+        opacity: 0.5;
+      }
+
+    </style>
+  </head>
+  <body>
+  	<div class="container">
+      {{ content }}
+  		
+      <div class="main-carousel">
+
+			{% for file in site.static_files %}
+        {% if file.path contains folder-number %}
+          {% if file.extname == '.jpg' or 
+            file.extname == '.jpeg' or 
+            file.extname == '.JPG' or 
+            file.extname == '.JPEG' or 
+            file.extname == '.png' %}
+
+          {% assign filenameparts = file.path | split: "/" %}
+          {% assign filename = filenameparts | last | replace: file.extname,"" %}
+
+          <div class="carousel-cell">
+            <img data-flickity-lazyload="{{ file.path }}" />
+          </div>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+      </div>
+		
+    </div><!-- /container -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="/assets/js/jquerypp.custom.js"></script>
+    <script src="/assets/js/jquery.bookblock.min.js"></script>
+    <!-- JavaScript -->
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <script>
+      function getUrlVars() {
+        var vars = {};
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+          vars[key] = value;
+        });
+        return vars;
+      }
+
+      function getUrlParam(parameter, defaultvalue){
+        var urlparameter = 1;
+        if(window.location.href.indexOf(parameter) > -1){
+          urlparameter = getUrlVars()[parameter];
+        }
+        return urlparameter;
+      }
+
+      function getPage() {
+        var pageNo = 1;
+        if (getUrlParam('p') != 1) {
+          pageNo = getUrlParam('p');
+        }
+
+        if (getUrlParam('page') != 1) {
+          pageNo = getUrlParam('page');
+        }
+
+        pageNo = Math.round(pageNo/2);
+
+        if (pageNo > 1) {
+          $( '#bb-bookblock' ).bookblock( 'jump', pageNo );
+        }
+        
+      }
+
+
+      var Page = (function() {
+
+        $('.main-carousel').flickity({
+          // options
+          cellAlign: 'right',
+          lazyLoad: true,
+          rightToLeft: true,
+          contain: true,
+          groupCells: true,
+          setGallerySize: false,
+          wrapAround: true,
+          freeScroll: true
+        });
+        
+        var config = {
+            $bookBlock : $( '#bb-bookblock' ),
+            $navNext : $( '.bb-nav-next' ),
+            $navPrev : $( '.bb-nav-prev' ),
+            $navFirst : $( '#bb-nav-first' ),
+            $navLast : $( '#bb-nav-last' )
+          },
+          init = function() {
+            config.$bookBlock.bookblock( {
+              speed : 1, //600,
+              direction: 'rtl',
+              shadowSides : 0.1, //0.8,
+              shadowFlip : 0.1, //0.4
+              onEndFlip : function(old, page, isLimit) { 
+                if (isLimit && page == 0) {
+                  location.href = "{{prevurl}}";
+                }
+                if (isLimit && page != 0) {
+                  location.href = "{{nexturl}}";
+                }
+              }
+            } );
+            initEvents();
+            getPage();
+          },
+          initEvents = function() {
+            
+            var $slides = config.$bookBlock.children();
+
+            // add navigation events
+            config.$navNext.on( 'click touchstart', function() {
+              config.$bookBlock.bookblock( 'next' );
+              return false;
+            } );
+
+            config.$navPrev.on( 'click touchstart', function() {
+              config.$bookBlock.bookblock( 'prev' );
+              return false;
+            } );
+
+            config.$navFirst.on( 'click touchstart', function() {
+              config.$bookBlock.bookblock( 'first' );
+              return false;
+            } );
+
+            config.$navLast.on( 'click touchstart', function() {
+              config.$bookBlock.bookblock( 'last' );
+              return false;
+            } );
+            
+            // add swipe events
+            $slides.on( {
+              'swipeleft' : function( event ) {
+                config.$bookBlock.bookblock( 'prev' );
+                return false;
+              },
+              'swiperight' : function( event ) {
+                config.$bookBlock.bookblock( 'next' );
+                return false;
+              }
+            } );
+
+            // add keyboard events
+            $( document ).keydown( function(e) {
+              var keyCode = e.keyCode || e.which,
+                arrow = {
+                  left : 37,
+                  up : 38,
+                  right : 39,
+                  down : 40
+                };
+
+              switch (keyCode) {
+                case arrow.left:
+                  config.$bookBlock.bookblock( 'next' );
+                  break;
+                case arrow.right:
+                  config.$bookBlock.bookblock( 'prev' );
+                  break;
+                case arrow.up:
+                  // config.$bookBlock.bookblock( 'first' );
+                  {% if prevurl %}
+                  location.href = "{{prevurl}}";
+                  {% endif %}
+                  break;
+                case arrow.down:
+                  // config.$bookBlock.bookblock( 'last' );
+                  {% if nexturl %}
+                  location.href = "{{nexturl}}";
+                  {% endif %}
+                  break;
+              }
+            } );
+          };
+
+          return { init : init };
+
+      })();
+    </script>
+    <script>
+        Page.init();
+    </script>
+
+  </body>
+</html>
