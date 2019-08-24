@@ -174,18 +174,19 @@
 
       function getPage() {
         var pageNo = 1;
-        if (getUrlParam('p') != 1) {
+        if (getUrlParam('p') != 0) {
           pageNo = getUrlParam('p');
         }
 
-        if (getUrlParam('page') != 1) {
+        if (getUrlParam('page') != 0) {
           pageNo = getUrlParam('page');
         }
 
-        pageNo = Math.round(pageNo/2);
+        pageNo = Math.floor((pageNo/2));
 
         if (pageNo > 1) {
-          $( '#bb-bookblock' ).bookblock( 'jump', pageNo );
+          // $( '#bb-bookblock' ).bookblock( 'jump', pageNo );
+          $('.main-carousel').flickity( 'select', pageNo, false, true );
         }
         
       }
