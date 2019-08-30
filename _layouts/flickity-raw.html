@@ -185,6 +185,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <!-- JavaScript -->
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <script src="https://unpkg.com/flickity-sync@2/flickity-sync.js"></script>
     <script>
       function getUrlVars() {
         var vars = {};
@@ -226,7 +227,7 @@
 
         $('.main-carousel').flickity({
           // options
-          cellAlign: 'right',
+          cellAlign: 'left',
           lazyLoad: 2,
           rightToLeft: true,
           contain: true,
@@ -235,12 +236,13 @@
           pageDots: false,
           // wrapAround: true,
           // freeScroll: true,
-          imagesLoaded: true
+          imagesLoaded: true,
+          sync: '.raw-carousel'
         });
 
         $('.raw-carousel').flickity({
           // options
-          cellAlign: 'right',
+          cellAlign: 'left',
           lazyLoad: 2,
           rightToLeft: true,
           contain: true,
