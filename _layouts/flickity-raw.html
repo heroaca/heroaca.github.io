@@ -102,7 +102,14 @@
       }*/
 
       .hidden {
-        display: none;
+        position: absolute;
+        top: -5000px;
+        transition: opacity 0.4s;
+        opacity: 0;
+      }
+
+      .invisible {
+        opacity: 0;
       }
 
       .main-carousel { 
@@ -158,6 +165,22 @@
         width: 20px;
       }
 
+      .nav-button {
+        font-size: 20px;
+        text-align: center;
+        padding-bottom: 5px;
+      }
+
+      .next-button {
+        background-color: red;
+        color: white;
+      }
+
+      .previous-button {
+        background-color: black;
+        color: white;
+      }
+
     </style>
   </head>
   <body>
@@ -183,6 +206,11 @@
           {% endif %}
         {% endif %}
       {% endfor %}
+
+          <div class="carousel-cell">
+            <a href="{{nexturl}}" class="nav-button next-button">次の話</a><br><br>
+            <a href="{{prevurl}}" class="nav-button previous-button">前の話</a>
+          </div>
       </div>
       <div class="raw-carousel">
 
@@ -203,6 +231,11 @@
           {% endif %}
         {% endif %}
       {% endfor %}
+
+          <div class="carousel-cell">
+            <a href="{{nexturl}}" class="nav-button next-button">次の話</a><br><br>
+            <a href="{{prevurl}}" class="nav-button previous-button">前の話</a>
+          </div>
       </div>
 		
     </div><!-- /container -->
@@ -259,6 +292,7 @@
         };
       }
 
+
       var Page = (function() {
 
         $('.main-carousel').flickity({
@@ -270,9 +304,11 @@
           groupCells: true,
           setGallerySize: false,
           pageDots: false,
+          // wrapAround: true,
+          // freeScroll: true,
           imagesLoaded: true,
           sync: '.raw-carousel'
-        });
+        }).focus();
 
         $('.raw-carousel').flickity({
           // options
@@ -283,15 +319,20 @@
           groupCells: true,
           setGallerySize: false,
           pageDots: false,
+          // wrapAround: true,
+          // freeScroll: true,
           imagesLoaded: true
         });
 
         // init Flickity with jQuery
-        var $carousel = $('.main-carousel').flickity();
+        var $carousel = $('.main-carousel')
+        var $carousel2 = $('.raw-carousel')
         var mainCarousel = document.querySelector('.main-carousel');
         var rawCarousel = document.querySelector('.raw-carousel');
+
         // get instance
-        var flkty = $carousel.data('flickity');
+        var flkty = $carousel.flickity().data('flickity');
+        var flkty2 = $carousel2.flickity().data('flickity');
         // access properties
         console.log( flkty.selectedIndex, flkty.selectedElement );
         var selectedPage = flkty.selectedIndex;
@@ -299,14 +340,21 @@
         var init = function() {
             initEvents();
             getPage();
+            rawCarousel.classList.add('hidden');
           },
           initEvents = function() {
             
             document.querySelector('.raw-button').addEventListener('click', throttle(function(ev) {
               if (mainCarousel.classList.contains('hidden')) {
+                $carousel.flickity( 'select', flkty2.selectedIndex, false );
                 mainCarousel.classList.remove('hidden');
+                rawCarousel.classList.add('hidden');
+                $carousel.flickity().focus();
               } else {
+                $carousel2.flickity( 'select', flkty.selectedIndex, false );
                 mainCarousel.classList.add('hidden');
+                rawCarousel.classList.remove('hidden');
+                $carousel2.flickity().focus();
               }
             }));
 
@@ -323,6 +371,8 @@
 
               switch (keyCode) {
                 case arrow.left:
+                  // $('.main-carousel').flickity('next');
+                  // $('.raw-carousel').flickity('next');
                   if (flkty.selectedIndex == flkty.slides.length - 1 && selectedPage == flkty.selectedIndex) {
                     {% if nexturl %}
                     location.href = "{{nexturl}}";
@@ -331,6 +381,8 @@
                   selectedPage = flkty.selectedIndex;
                   break;
                 case arrow.right:
+                  // $('.main-carousel').flickity('previous');
+                  // $('.raw-carousel').flickity('previous');
                   if (flkty.selectedIndex == 0 && selectedPage == 0) {
                     {% if prevurl %}
                     location.href = "{{prevurl}}";
@@ -349,10 +401,21 @@
                   {% endif %}
                   break;
                 case arrow.d:
+
+                  // get instance
+                  // flkty = $carousel.flickity().data('flickity');
+                  // flkty2 = $carousel2.flickity().data('flickity');
+
                   if (mainCarousel.classList.contains('hidden')) {
+                    $carousel.flickity( 'select', flkty2.selectedIndex, false );
                     mainCarousel.classList.remove('hidden');
+                    rawCarousel.classList.add('hidden');
+                    $carousel.flickity().focus();
                   } else {
+                    $carousel2.flickity( 'select', flkty.selectedIndex, false );
                     mainCarousel.classList.add('hidden');
+                    rawCarousel.classList.remove('hidden');
+                    $carousel2.flickity().focus();
                   }
                   break;
               }
